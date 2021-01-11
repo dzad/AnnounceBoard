@@ -278,17 +278,17 @@ public class UserService {
 	
 	public String detectCountry(String ip) {
 	    
-		JsonNode response = Unirest.get("http://api.ipstack.com/{ip}?access_key={key};")
+		JsonNode response = Unirest.get("http://api.ipstack.com/{ip}?access_key={key}&fields=country_name")
 		.routeParam("ip",ip)
 		.routeParam("key",ACCESS_KEY)
 		.asJson()
 		.getBody();
 		
-		System.out.println(Unirest.get("http://api.ipstack.com/{ip}?access_key={key};")
+		System.out.println(Unirest.get("http://api.ipstack.com/{ip}?access_key={key}")
 		.routeParam("ip",ip)
 		.routeParam("key",ACCESS_KEY).getUrl());
 		
-		String country = response.toString();
+		String country = response.getObject().getString("country_name");
 		System.out.println(country);
 		return country;
 	}
