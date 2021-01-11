@@ -52,7 +52,7 @@ import board.model.PATCH;
 public class UserService {
 	
 	private String ACCESS_KEY = "ec6e41d0f6f56a5337760174f0cacfd4";
-	
+								 
 	/*
 	 *  Creamos una instancia del gestor de users.
 	 *  La variable board debe ser estÃ¡tica para que no se
@@ -278,13 +278,13 @@ public class UserService {
 	
 	public String detectCountry(String ip) {
 	    
-		JsonNode response = Unirest.get("https://api.ipstack.com/{ip}?access_key={key};")
+		JsonNode response = Unirest.get("http://api.ipstack.com/{ip}?access_key={key};")
 		.routeParam("ip",ip)
 		.routeParam("key",ACCESS_KEY)
 		.asJson()
 		.getBody();
 		
-		System.out.println(Unirest.get("https://api.ipstack.com/{ip}?access_key={key};")
+		System.out.println(Unirest.get("http://api.ipstack.com/{ip}?access_key={key};")
 		.routeParam("ip",ip)
 		.routeParam("key",ACCESS_KEY).getUrl());
 		
