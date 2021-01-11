@@ -284,6 +284,10 @@ public class UserService {
 		.asJson()
 		.getBody();
 		
+		System.out.println(Unirest.get("https://api.ipstack.com/{ip}?access_key={key};")
+		.routeParam("ip",ip)
+		.routeParam("key",ACCESS_KEY).getUrl());
+		
 		String country = response.toString();
 		System.out.println(country);
 		return country;
