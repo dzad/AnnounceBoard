@@ -284,8 +284,8 @@ public class UserService {
 		.asJson()
 		.getBody();
 		
-		String country = response.getObject().getString("country_name");
-		
+		String country = response.toString();
+		System.out.println(country);
 		return country;
 	}
 	
