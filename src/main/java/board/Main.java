@@ -5,7 +5,6 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
-import javax.servlet.Servlet;
 
 public class Main {
 
@@ -14,7 +13,8 @@ public class Main {
 		config.packages("board.services");
 		ServletHolder servlet = new ServletHolder(new ServletContainer(config));
 
-		Server server = new Server(8080);
+		String port = System.getenv("PORT");
+		Server server = new Server(Integer.valueOf(port));
 		ServletContextHandler context = new ServletContextHandler(server, "/*");
 		context.addServlet(servlet, "/board/*");
 
